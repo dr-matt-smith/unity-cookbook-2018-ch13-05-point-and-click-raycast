@@ -11,7 +11,7 @@ public class MoveToClickPoint : MonoBehaviour
     void Start() 
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.destination = transform.position;
+        sphereDestination.transform.position = transform.position;
     }
     
     void Update() 
