@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-// adapted from Unity exmaple:
-// https://docs.unity3d.com/Manual/nav-MoveToClickPoint.html
-
 public class MoveToClickPoint : MonoBehaviour
 {
     public GameObject sphereDestination;
-    public GameObject sphereDestinationCandidate;
 
     private NavMeshAgent navMeshAgent;    
     private RaycastHit hit;
@@ -37,9 +33,6 @@ public class MoveToClickPoint : MonoBehaviour
             
             // (2) move Red sphere to destination point
             sphereDestination.transform.position = rayPoint;
-        } else {
-            // move yellow sphere to destination point
-            sphereDestinationCandidate.transform.position = rayPoint;
         }
     }
 
@@ -47,7 +40,6 @@ public class MoveToClickPoint : MonoBehaviour
     private bool FireRayCast(Ray rayFromMouseClick)
     {
         // ignore layer "UISpheres"
-        LayerMask layerMask = ~LayerMask.GetMask("UISpheres");
-        return Physics.Raycast(rayFromMouseClick, out hit, 100, layerMask.value);
+        return Physics.Raycast(rayFromMouseClick, out hit, 100);
     }
 }
